@@ -6,25 +6,18 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 11:04:39 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/03 11:08:31 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/03 19:52:21 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-
-int		ft_strlen(char *str)
+size_t	ft_strlen(const char *s)
 {
-	int n;
+	size_t	n;
 
 	n = 0;
-	while (str[n] != '\0'){
+	while (s[n] != '\0')
 		n++;
-	}
 	return (n);
-}
-
-int main(void){
-	int a = ft_strlen("12345");
-	printf("%d\n", a);
 }

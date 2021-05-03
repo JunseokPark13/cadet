@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/03 13:26:01 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/03 17:15:13 by jupark           ###   ########.fr       */
+/*   Created: 2021/05/03 18:34:37 by jupark            #+#    #+#             */
+/*   Updated: 2021/05/03 19:09:08 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memcpy(void *dst, const void *src, int n)
-{
-	unsigned char		*tmp_d;
-	const unsigned char *tmp_s;
+#include "libft.h"
 
-	if (!dst && !src)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	const unsigned char	*tmp_s1;
+	const unsigned char	*tmp_s2;
+	size_t				i;
+
+	tmp_s1 = (unsigned char*)s1;
+	tmp_s2 = (unsigned char*)s2;
+	i = 0;
+	while (i < n)
 	{
-		return (0);
+		if (tmp_s1[i] != tmp_s2[i])
+		{
+			return (tmp_s1[i] - tmp_s2[i]);
+		}
+		i++;
 	}
-	tmp_d = (unsigned char*)dst;
-	tmp_s = (unsigned char*)src;
-	while (n--)
-	{
-		*tmp_d++ = *tmp_s++;
-	}
-	return (dst);
+	return (0);
 }
