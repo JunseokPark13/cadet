@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/03 13:03:00 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/04 15:45:38 by jupark           ###   ########.fr       */
+/*   Created: 2021/05/04 19:56:27 by jupark            #+#    #+#             */
+/*   Updated: 2021/05/04 20:25:05 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_bzero(void *s, size_t n)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned char	*tmp;
+	unsigned char	*tmp_s1;
+	unsigned char	*tmp_s2;
+	size_t			i;
 
-	tmp = s;
-	ft_memset(tmp, 0, n);
-	return (s);
+	tmp_s1 = (unsigned char*)s1;
+	tmp_s2 = (unsigned char*)s2;
+	i = 0;
+	while (i < n)
+	{
+		if (tmp_s1[i] != tmp_s2[i] || tmp_s1[i] == '\0' || tmp_s2[i] == '\0')
+			return (tmp_s1[i] - tmp_s2[i]);
+		i++;
+	}
+	return (0);
 }

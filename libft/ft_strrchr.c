@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/03 13:03:00 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/04 15:45:38 by jupark           ###   ########.fr       */
+/*   Created: 2021/05/04 16:41:36 by jupark            #+#    #+#             */
+/*   Updated: 2021/05/04 17:29:43 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_bzero(void *s, size_t n)
+char	*ft_strrchr(const char *s, int c)
 {
-	unsigned char	*tmp;
+	char	*tmp_s;
+	char	val;
+	size_t	len;
 
-	tmp = s;
-	ft_memset(tmp, 0, n);
-	return (s);
+	tmp_s = (char*)s;
+	val = (char)c;
+	len = ft_strlen(s);
+	while (len > 0)
+	{
+		if (tmp_s[len] == val)
+			return (tmp_s + len);
+		len--;
+	}
+	if (tmp_s[0] == val)
+		return (tmp_s);
+	return (0);
 }

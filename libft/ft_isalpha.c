@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/03 13:03:00 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/04 15:45:38 by jupark           ###   ########.fr       */
+/*   Created: 2021/05/04 23:10:26 by jupark            #+#    #+#             */
+/*   Updated: 2021/05/04 23:16:23 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_bzero(void *s, size_t n)
+int		ft_isalpha(int c)
 {
-	unsigned char	*tmp;
-
-	tmp = s;
-	ft_memset(tmp, 0, n);
-	return (s);
+	if ((65 <= c && c <= 90) || (97 <= c && c <= 122))
+	{
+		return (1);
+	}
+	else
+		return (0);
 }
