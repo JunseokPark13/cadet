@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 13:59:53 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/04 23:14:33 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/04 23:21:56 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_atoi(const char *nptr);
 int		ft_isalpha(int c);
+int		ft_isdigit(int c);
 #endif
