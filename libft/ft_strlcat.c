@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 19:54:30 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/03 20:15:27 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/05 10:48:18 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	dst_len;
 	size_t	src_len;
 	size_t	i;
-	
+
 	dst_len = ft_strlen(dst);
 	src_len = ft_strlen(src);
-
 	if (dstsize == 0)
 		return (src_len);
 	else if (dstsize < dst_len)
