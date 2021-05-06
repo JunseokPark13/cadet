@@ -6,7 +6,7 @@
 #    By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/03 15:27:37 by jupark            #+#    #+#              #
-#    Updated: 2021/05/05 19:07:14 by jupark           ###   ########.fr        #
+#    Updated: 2021/05/06 15:48:38 by jupark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,15 +23,26 @@ SRCS = ft_bzero.c ft_memset.c ft_strlen.c ft_memcpy.c \
 	   ft_toupper.c ft_tolower.c ft_calloc.c ft_strdup.c \
 	   ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c \
 	   ft_itoa.c ft_strmapi.c ft_putchar_fd.c ft_putstr_fd.c \
-	   ft_putendl_fd.c ft_putnbr_fd.c \
-	   ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-	   ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c
+	   ft_putendl_fd.c ft_putnbr_fd.c
+
+SRCS_B =	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+			ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
+			ft_lstmap.c
+
+SRCS_B2 =	ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c \
+			ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c \
+			ft_lstiter_bonus.c ft_lstmap_bonus.c
+
 
 OBJS = $(SRCS:.c=.o)
+OBJS_B = $(SRCS_B:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	ar rcs $@ $^
+
+bonus : $(OBJS_B)
 	ar rcs $(NAME) $^
 
 clean:

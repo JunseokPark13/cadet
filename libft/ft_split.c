@@ -6,26 +6,25 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 13:32:00 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/05 18:53:27 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/06 14:14:42 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_countword(char const *s, char c)
+int			ft_countword(char const *s, char c)
 {
 	int		i;
 	int		flag;
 	int		cnt;
 
 	cnt = 0;
-	i = -1;
+	i = 0;
 	flag = 1;
-	while (s[++i])
+	while (s[i])
 	{
-		if (flag && s[i] != c)
+		if (flag && s[i++] != c)
 		{
-			i++;
 			cnt++;
 			while (s[i] != c && s[i] != '\0')
 				i++;
@@ -37,17 +36,26 @@ int		ft_countword(char const *s, char c)
 	return (cnt);
 }
 
-char	*ft_seperate(char const *s, char c, int pos)
+char		*ft_sep(char const *s, char c, int pos)
 {
 	int		cur;
+	int		i;
+	char	*tmp;
 
 	cur = pos++;
 	while (s[pos] != c && s[pos] != '\0')
 		pos++;
-	return (ft_substr(s, cur, pos - cur));
+	tmp = (char*)malloc(sizeof(char) * (pos - cur + 1));
+	if (!tmp)
+		return (NULL);
+	i = 0;
+	while (cur < pos)
+		tmp[i++] = s[cur++];
+	tmp[i] = '\0';
+	return (tmp);
 }
 
-char	**ft_split(char const *s, char c)
+char		**ft_split(char const *s, char c)
 {
 	int		i;
 	int		j;
@@ -63,7 +71,7 @@ char	**ft_split(char const *s, char c)
 	{
 		if (flag && s[j] != c)
 		{
-			tmp[i++] = ft_seperate(s, c, j);
+			tmp[i++] = ft_sep(s, c, j);
 			flag = 0;
 		}
 		if (s[j] == c)

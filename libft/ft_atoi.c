@@ -6,13 +6,13 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 20:25:25 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/05 10:45:14 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/06 18:12:12 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_skipspace(const unsigned char *str)
+int		ft_skipspace(const char *str)
 {
 	int		i;
 
@@ -24,26 +24,25 @@ int		ft_skipspace(const unsigned char *str)
 
 int		ft_atoi(const char *nptr)
 {
-	int					sign;
-	int					num;
+	long				sign;
+	long				num;
 	int					i;
-	const unsigned char *tmp;
-
-	tmp = (unsigned char *)nptr;
+	
 	num = 0;
 	sign = 1;
-	i = ft_skipspace(tmp);
-	if (tmp[i] == '-')
-	{
+	i = ft_skipspace(nptr);
+	if (nptr[i] == '-')
 		sign = -1;
+	if (nptr[i] == '-' || nptr[i] == '+')
 		i++;
-	}
-	else if (tmp[i] == '+')
-		i++;
-	while (48 <= tmp[i] && tmp[i] <= 57)
+	while (48 <= nptr[i] && nptr[i] <= 57)
 	{
 		num *= 10;
-		num += tmp[i++] - 48;
+		num += nptr[i++] - 48;
+		if (num > 2147483647 && sign == 1)
+			return (-1);
+		if (num > 2147483648 && sign == -1)
+			return (0);
 	}
-	return (num * sign);
+	return ((num * sign));
 }

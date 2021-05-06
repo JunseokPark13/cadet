@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 13:03:00 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/05 10:56:46 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/06 17:29:05 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,13 @@ int main(void){
 		printf("%d %d\n", src_i1[i], dest_i1[i]);
 		printf("%d %d\n", src_i2[i], dest_i2[i]);
 	}
-	printf("\n");
+	printf("\n\n\n");
 
+	char t1[6] = "99999";
+	//char *t2 = "\0";
+	
+	ft_memcpy(t1, NULL, 1);
+	write(1, "new\n", 4);
+	write(1, t1, 5);
+	write(1, "\n", 1);
 }
