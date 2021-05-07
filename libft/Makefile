@@ -6,7 +6,7 @@
 #    By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/03 15:27:37 by jupark            #+#    #+#              #
-#    Updated: 2021/05/06 15:48:38 by jupark           ###   ########.fr        #
+#    Updated: 2021/05/07 15:12:29 by jupark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,10 +46,11 @@ bonus : $(OBJS_B)
 	ar rcs $(NAME) $^
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(OBJS_B)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: clean all
 
+.PHONY: all bonus clean fclean re

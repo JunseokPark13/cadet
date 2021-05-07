@@ -45,4 +45,8 @@ int main(void)
 
 	printf("%s => %d\n", "\n\n\n\t1234567", atoi("\n\n\n\t1234567"));
 	printf("%s => %d\n\n", "\n\n\n\t1234567", ft_atoi("\n\n\n\t1234567"));
+	
+
+	printf("%s => %d\n", "", atoi(""));
+	printf("%s => %d\n", "", ft_atoi(""));
 }

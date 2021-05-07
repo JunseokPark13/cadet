@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 13:03:00 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/06 17:29:05 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/07 16:22:52 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,59 +16,46 @@
 #include <unistd.h>
 #include <string.h>
 
-int main(void){
+int main(int argc, char* argv[]){
 
-	char src1[6] = "12345";
-	char dest1[6];
-	int src_i1[3] = {1, 2, 3};
-	int dest_i1[3];
-	char src2[6] = "12345";
-	char dest2[6];
-	int src_i2[3] = {1, 2, 3};
-	int dest_i2[3];
+	char *k, *k2, *k3, *k4;
+	k = (char*)malloc(sizeof(char) * atoi(argv[2]));
+	k2 = (char*)malloc(sizeof(char) * atoi(argv[4]));
+	k3 = (char*)malloc(sizeof(char) * atoi(argv[2]));
+	k4 = (char*)malloc(sizeof(char) * atoi(argv[4]));
 
-
-	write(1, src1, 6);
-	write(1, "\n", 1);
-	write(1, dest1, 6);
-	write(1, "\n", 1);
-	write(1, src2, 6);
-	write(1, "\n", 1);
-	write(1, dest2, 6);
-	write(1, "\n", 1);
-
-	for(int i = 0; i < 3; i++){
-		printf("%d %d\n", src_i1[i], dest_i1[i]);
-		printf("%d %d\n", src_i2[i], dest_i2[i]);
+	for(int i = 0; i < (int)strlen(argv[1]); i++)
+	{
+		k[i] = argv[1][i];
+		k3[i] = argv[1][i];
 	}
-	printf("\n");
-
-	memcpy(dest1, src1, sizeof(char) * sizeof(src1));
-	memcpy(dest_i1, src_i1, sizeof(int) * 3);
-	ft_memcpy(dest2, src2, sizeof(char) * sizeof(src2));
-	ft_memcpy(dest_i2, src_i2, sizeof(int) * 3);
-	write(1, "\n", 1);
-	
-	write(1, src1, 6);
-	write(1, "\n", 1);
-	write(1, dest1, 6);
-	write(1, "\n", 1);
-	write(1, src2, 6);
-	write(1, "\n", 1);
-	write(1, dest2, 6);
-	write(1, "\n", 1);
-
-	for(int i = 0; i < 3; i++){
-		printf("%d %d\n", src_i1[i], dest_i1[i]);
-		printf("%d %d\n", src_i2[i], dest_i2[i]);
+	for(int i = 0; i < (int)strlen(argv[3]); i++)
+	{
+		k2[i] = argv[3][i];
+		k4[i] = argv[3][i];
 	}
-	printf("\n\n\n");
 
-	char t1[6] = "99999";
-	//char *t2 = "\0";
+	k[strlen(argv[1])] = '\0';
+	k3[strlen(argv[1])] = '\0';
 	
-	ft_memcpy(t1, NULL, 1);
-	write(1, "new\n", 4);
-	write(1, t1, 5);
+	k2[strlen(argv[3])] = '\0';
+	k4[strlen(argv[3])] = '\0';
+	
+	size_t len = atoi(argv[5]);
+
+	printf("%d\n", argc);
+	printf("%s, %s, %ld\n", k, k2, len);
+
+	memcpy(k, k2, len);
+	ft_memcpy(k3, k4, len);
+
+	write(1, k, strlen(k));
 	write(1, "\n", 1);
+	write(1, k3, strlen(k3));
+	write(1, "\n", 1);
+
+	free(k);
+	free(k2);
+	free(k3);
+	free(k4);
 }

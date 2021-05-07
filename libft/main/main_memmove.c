@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 13:03:00 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/05 10:55:13 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/07 16:49:50 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,53 +16,46 @@
 #include <unistd.h>
 #include <string.h>
 
-int main(void){
+int main(int argc, char* argv[]){
 
-	char src1[] = "BlockDMask";
-	char dest1[] = "fffffdddddzzzzz";
-	int src_i1[3] = {1, 2, 3};
-	int dest_i1[3];
+	char *k, *k2, *k3, *k4;
+	k = (char*)malloc(sizeof(char) * atoi(argv[2]));
+	k2 = (char*)malloc(sizeof(char) * atoi(argv[4]));
+	k3 = (char*)malloc(sizeof(char) * atoi(argv[2]));
+	k4 = (char*)malloc(sizeof(char) * atoi(argv[4]));
 
-	char src2[] = "BlockDMask";
-	char dest2[] = "fffffdddddzzzzz";
-	int src_i2[3] = {1, 2, 3};
-	int dest_i2[3];
-
-
-	write(1, src1, 10);
-	write(1, "\n", 1);
-	write(1, dest1, 15);
-	write(1, "\n", 1);
-	write(1, src2, 10);
-	write(1, "\n", 1);
-	write(1, dest2, 15);
-	write(1, "\n", 1);
-
-	for(int i = 0; i < 3; i++){
-		printf("%d %d\n", src_i1[i], dest_i1[i]);
-		printf("%d %d\n", src_i2[i], dest_i2[i]);
+	for(int i = 0; i < (int)strlen(argv[1]); i++)
+	{
+		k[i] = argv[1][i];
+		k3[i] = argv[1][i];
 	}
-	printf("\n");
+	for(int i = 0; i < (int)strlen(argv[3]); i++)
+	{
+		k2[i] = argv[3][i];
+		k4[i] = argv[3][i];
+	}
 
-	memmove(src1, src1 + 2, sizeof(char) * 4);
-	memmove(dest_i1, src_i1, sizeof(int) * 3);
-	ft_memmove(src2, src2 + 2, sizeof(char) * 4);
-	ft_memmove(dest_i2, src_i2, sizeof(int) * 3);
-	write(1, "\n", 1);
+	k[strlen(argv[1])] = '\0';
+	k3[strlen(argv[1])] = '\0';
 	
-	write(1, src1, 10);
+	k2[strlen(argv[3])] = '\0';
+	k4[strlen(argv[3])] = '\0';
+	
+	size_t len = atoi(argv[5]);
+
+	printf("%d\n", argc);
+	printf("%s, %s, %ld\n", k, k2, len);
+
+	memmove(k, k2, len);
+	ft_memmove(k3, k4, len);
+
+	write(1, k, strlen(k));
 	write(1, "\n", 1);
-	write(1, dest1, 15);
-	write(1, "\n", 1);
-	write(1, src2, 10);
-	write(1, "\n", 1);
-	write(1, dest2, 15);
+	write(1, k3, strlen(k3));
 	write(1, "\n", 1);
 
-	for(int i = 0; i < 3; i++){
-		printf("%d %d\n", src_i1[i], dest_i1[i]);
-		printf("%d %d\n", src_i2[i], dest_i2[i]);
-	}
-	printf("\n");
-
+	free(k);
+	free(k2);
+	free(k3);
+	free(k4);
 }

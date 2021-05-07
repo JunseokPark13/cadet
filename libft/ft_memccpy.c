@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 14:19:16 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/05 10:49:45 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/07 16:53:56 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	{
 		tmp_d[i] = tmp_s[i];
 		if (tmp_s[i] == (unsigned char)c)
-		{
 			return (dst + i + 1);
-		}
 		i++;
 	}
 	return (0);
