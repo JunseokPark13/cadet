@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 16:41:36 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/05 10:46:28 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:52:12 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	*tmp_s;
-	char	val;
-	size_t	len;
-	size_t	i;
+	char			*tmp_s;
+	unsigned char	val;
+	size_t			len;
+	size_t			i;
 
 	tmp_s = (char*)s;
-	val = (char)c;
+	val = (unsigned char)c;
 	len = ft_strlen(s);
 	i = 0;
 	while (i <= len)

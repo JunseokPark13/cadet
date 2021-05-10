@@ -6,13 +6,13 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 16:09:12 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/07 14:34:04 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:38:14 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	write_num(int n, int fd)
+static void	write_num(int n, int fd)
 {
 	char c;
 
@@ -25,8 +25,7 @@ void	write_num(int n, int fd)
 	}
 }
 
-
-void	ft_putnbr_fd(int n, int fd)
+void		ft_putnbr_fd(int n, int fd)
 {
 	char c;
 

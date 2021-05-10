@@ -3,14 +3,15 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int main(void)
+int main(int argc, char* argv[])
 {
-	char *s1 = "123456789";
-	char *sub1_1 = ft_substr(s1, 0, 5);
-	char *sub1_2 = ft_substr(s1, 5, 5);
+	char *k;
+	char *s = argv[1];
+	int start = atoi(argv[2]);
+	int len = atoi(argv[argc - 1]);
 
-	write(1, sub1_1, 5);
-	write(1, "\n", 1);
-	write(1, sub1_2, 5);
+	k = ft_substr(s, start, len);
+	
+	write(1, k, strlen(k));
 	write(1, "\n", 1);
 }

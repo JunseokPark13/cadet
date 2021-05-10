@@ -3,9 +3,9 @@
 #include <ctype.h>
 #include <stdio.h>
 
-int main(void)
+int main(int argc, char* argv[])
 {
-	char k = 0;
-	for(int i = 0; i < 128; i++)
-		printf("%c -> %d %d\n", k + i, isprint(k + i), ft_isprint(k + i));
+	printf("c = %c\n", argv[argc - 1][0]);
+	printf("n1 = %d\n", isprint(argv[argc - 1][0]));
+	printf("n2 = %d\n", ft_isprint(argv[argc - 1][0]));
 }

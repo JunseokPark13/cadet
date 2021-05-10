@@ -6,13 +6,13 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 20:25:25 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/06 18:12:12 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:08:06 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_skipspace(const char *str)
+static int		ft_skipspace(const char *str)
 {
 	int		i;
 
@@ -22,12 +22,12 @@ int		ft_skipspace(const char *str)
 	return (i);
 }
 
-int		ft_atoi(const char *nptr)
+int				ft_atoi(const char *nptr)
 {
 	long				sign;
 	long				num;
 	int					i;
-	
+
 	num = 0;
 	sign = 1;
 	i = ft_skipspace(nptr);

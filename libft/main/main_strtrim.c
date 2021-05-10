@@ -4,26 +4,15 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int main(void)
+int main(int argc, char* argv[])
 {
-	char *s1 = "abc123abc";
-	char *set = "abc";
+	char *str;
 
-	char *res = ft_strtrim(s1, set);
+	char *s1 = argv[1];
+	char *set = argv[argc - 1];
 
-	write(1, res, strlen(res));
+	str = ft_strtrim(s1, set);
+
+	write(1, str, strlen(str));
 	write(1, "\n", 1);
-
-	s1 = "acbc123bbac";
-
-	char *res2 = ft_strtrim(s1, set);
-	write(1, res2, strlen(res2));
-	write(1, "\n", 1);
-
-	s1 = "acbc1ab2cbca3bbac";
-
-	char *res3 = ft_strtrim(s1, set);
-	write(1, res3, strlen(res3));
-	write(1, "\n", 1);
-
 }

@@ -6,13 +6,13 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 15:24:49 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/05 15:44:32 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:16:12 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_checklength(int n)
+static int		ft_checklength(int n)
 {
 	int cnt;
 
@@ -31,7 +31,7 @@ int		ft_checklength(int n)
 	return (cnt);
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	int		len;
 	char	*nstr;

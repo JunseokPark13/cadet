@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 13:41:45 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/06 13:44:18 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/08 17:17:45 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	t_list *next_n;
 
-	next_n = lst;
-	if (!lst)
+	if (!lst || !f)
 		return ;
+	next_n = lst;
 	while (next_n)
 	{
 		f(next_n->content);

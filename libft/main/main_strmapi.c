@@ -15,10 +15,9 @@ char	upper_odd(unsigned int i, char c)
 }
 
 
-int main(void)
+int main(int argc, char* argv[])
 {
-	char *s1 = "abcdefgh";
-	char *res1 = ft_strmapi(s1, upper_odd);
+	char *res1 = ft_strmapi(argv[argc - 1], upper_odd);
 
-	printf("%s\n%s\n", s1, res1);
+	printf("%s\n%s\n", argv[argc - 1], res1);
 }

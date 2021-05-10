@@ -6,37 +6,32 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 13:32:00 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/06 14:14:42 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:48:24 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_countword(char const *s, char c)
+static int			ft_countword(char const *s, char c)
 {
 	int		i;
-	int		flag;
 	int		cnt;
 
 	cnt = 0;
 	i = 0;
-	flag = 1;
 	while (s[i])
 	{
-		if (flag && s[i++] != c)
+		if (s[i++] != c)
 		{
 			cnt++;
 			while (s[i] != c && s[i] != '\0')
 				i++;
-			flag = 0;
 		}
-		if (s[i] == c)
-			flag = 1;
 	}
 	return (cnt);
 }
 
-char		*ft_sep(char const *s, char c, int pos)
+static char			*ft_sep(char const *s, char c, int pos)
 {
 	int		cur;
 	int		i;
@@ -55,13 +50,26 @@ char		*ft_sep(char const *s, char c, int pos)
 	return (tmp);
 }
 
-char		**ft_split(char const *s, char c)
+static char			**ft_freeall(char **s)
+{
+	unsigned int i;
+
+	i = -1;
+	while (s[++i])
+		free(s[i]);
+	free(s);
+	return (NULL);
+}
+
+char				**ft_split(char const *s, char c)
 {
 	int		i;
 	int		j;
 	int		flag;
 	char	**tmp;
 
+	if (!s)
+		return (NULL);
 	if (!(tmp = (char**)malloc(sizeof(char*) * (ft_countword(s, c) + 1))))
 		return (NULL);
 	i = 0;
@@ -71,7 +79,8 @@ char		**ft_split(char const *s, char c)
 	{
 		if (flag && s[j] != c)
 		{
-			tmp[i++] = ft_sep(s, c, j);
+			if (!(tmp[i++] = ft_sep(s, c, j)))
+				return (ft_freeall(tmp));
 			flag = 0;
 		}
 		if (s[j] == c)

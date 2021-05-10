@@ -13,10 +13,16 @@ int main(void)
 		exit(0);
 	}
 	
+	printf("OPEN_MAX : %d\n", OPEN_MAX);
 	printf("BUFFER_SIZE : %d\n", BUFFER_SIZE);
+	
+	//printf("wrong op : %d\n\n", get_next_line(15, &str));
 
 	do {
 		status = get_next_line(op, &str);
+		//if (status == 0)
+		//	break;
 		printf("%d : %s\n", status, str);
 	} while(status > 0);
+	
 }

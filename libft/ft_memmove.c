@@ -6,13 +6,11 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 15:38:08 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/06 18:03:56 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/10 11:36:39 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-#include <stdio.h>
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {

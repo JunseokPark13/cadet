@@ -1,29 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_memcmp.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/03 13:03:00 by jupark            #+#    #+#             */
+/*   Updated: 2021/05/08 13:42:34 by jupark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft.h"
 
 #include <stdio.h>
 #include <unistd.h>
+#include <string.h>
 
-int main(void)
-{
-	char s1[] = "012345";
-	char s2[] = "012345";
-	char s3[] = "012399";
-	char s4[] = "";
-	char s5[] = "";
+int main(int argc, char* argv[]){
 
-	printf("%s %s %d : %d\n", s1, s2, 6, memcmp(s1, s2, 6 * sizeof(char)));
-	printf("%s %s %d : %d\n\n", s1, s2, 6, ft_memcmp(s1, s2, 6 * sizeof(char)));
-	
-	printf("%s %s %d : %d\n", s1, s3, 4, memcmp(s1, s3, 4 * sizeof(char)));
-	printf("%s %s %d : %d\n\n", s1, s3, 4, ft_memcmp(s1, s3, 4 * sizeof(char)));
-	
-	printf("%s %s %d : %d\n", s1, s3, 6, memcmp(s1, s3, 6 * sizeof(char)));
-	printf("%s %s %d : %d\n\n", s1, s3, 6, ft_memcmp(s1, s3, 6 * sizeof(char)));
-	
-	printf("%s %s %d : %d\n", s1, s4, 0, memcmp(s1, s4, 0 * sizeof(char)));
-	printf("%s %s %d : %d\n\n", s1, s4, 0, ft_memcmp(s1, s4, 0 * sizeof(char)));
-	
-	printf("%s %s %d : %d\n", s4, s5, 2, memcmp(s4, s5, 2 * sizeof(char)));
-	printf("%s %s %d : %d\n\n", s4, s5, 2, ft_memcmp(s4, s5, 2 * sizeof(char)));
+	char *k, *k2, *k3, *k4;
+	k = (char*)malloc(sizeof(char) * atoi(argv[2]));
+	k2 = (char*)malloc(sizeof(char) * atoi(argv[4]));
+	k3 = (char*)malloc(sizeof(char) * atoi(argv[2]));
+	k4 = (char*)malloc(sizeof(char) * atoi(argv[4]));
 
+	for(int i = 0; i < (int)strlen(argv[1]); i++)
+	{
+		k[i] = argv[1][i];
+		k3[i] = argv[1][i];
+	}
+	for(int i = 0; i < (int)strlen(argv[3]); i++)
+	{
+		k2[i] = argv[3][i];
+		k4[i] = argv[3][i];
+	}
+
+	k[strlen(argv[1])] = '\0';
+	k3[strlen(argv[1])] = '\0';
+	
+	k2[strlen(argv[3])] = '\0';
+	k4[strlen(argv[3])] = '\0';
+	
+	size_t len = atoi(argv[5]);
+
+	printf("%d\n", argc);
+	printf("%s, %s, %ld\n", k, k2, len);
+
+	int n1 = memcmp(k, k2, len);
+	int n2 = ft_memcmp(k3, k4, len);
+
+	printf("n1 = %d\nn2 = %d\n", n1, n2);
+
+	free(k);
+	free(k2);
+	free(k3);
+	free(k4);
 }

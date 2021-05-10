@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 17:55:45 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/05 10:47:08 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/10 12:12:43 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t l_len;
 	size_t i;
 
+	if (*little == '\0')
+		return ((char*)big);
 	b_len = ft_strlen(big);
 	l_len = ft_strlen(little);
-	if (little[0] == '\0')
-		return ((char*)big);
 	if (b_len < l_len || len < l_len)
 		return (0);
 	i = 0;
@@ -29,7 +29,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	{
 		if (big[i] == little[0] && i + l_len <= len)
 			if (!ft_memcmp(big + i, little, l_len))
-				return (char*)(big + i);
+				return ((char*)(big + i));
 		i++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 18:34:37 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/05 10:46:54 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/08 13:02:31 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n)
 	while (i < n)
 	{
 		if (tmp_s1[i] != tmp_s2[i])
-		{
 			return (tmp_s1[i] - tmp_s2[i]);
-		}
 		i++;
 	}
 	return (0);

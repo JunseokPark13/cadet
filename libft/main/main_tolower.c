@@ -1,11 +1,11 @@
-#include "../../libft.h"
+#include "../libft.h"
 
 #include <ctype.h>
 #include <stdio.h>
 
-int main(void)
+int main(int argc, char* argv[])
 {
-	char k = 0;
-	for(int i = 0; i < 128; i++)
-		printf("%c -> %c %c\n", k + i, tolower(k + i), ft_tolower(k + i));
+	printf("c = %c\n", argv[argc - 1][0]);
+	printf("n1 = %c\n", tolower(argv[argc - 1][0]));
+	printf("n2 = %c\n", ft_tolower(argv[argc - 1][0]));
 }

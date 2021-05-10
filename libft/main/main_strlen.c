@@ -2,13 +2,23 @@
 
 #include <stdio.h>
 
-int main(void)
+int main(int argc, char* argv[])
 {
-	char k[] = "12345";
-	char *k2 = "1234567890";
-	char k3[7] = "123456";
+	char *s1, *s2;
+	
+	s1 = (char*)malloc(sizeof(char) * atoi(argv[2]));
+	s2 = (char*)malloc(sizeof(char) * atoi(argv[2]));
+	
+	for(int i = 0; i < (int)strlen(argv[1]); i++){
+		s1[i] = argv[1][i];
+		s2[i] = argv[1][i];
+	}
 
-	printf("%s -> %ld, %ld\n", k, strlen(k), ft_strlen(k));
-	printf("%s -> %ld, %ld\n", k2, strlen(k2), ft_strlen(k2));
-	printf("%s -> %ld, %ld\n", k3, strlen(k3), ft_strlen(k3));
+	printf("argc = %d\n", argc);
+	printf("s = %s\n", s1);
+
+	int n1 = strlen(s1);
+	int n2 = strlen(s2);
+
+	printf("n1 = %d\nn2 = %d\n", n1, n2);
 }

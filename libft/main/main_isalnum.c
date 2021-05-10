@@ -3,18 +3,9 @@
 #include <ctype.h>
 #include <stdio.h>
 
-int main(void)
+int main(int argc, char* argv[])
 {
-	char k = 'a';
-	for(int i = 0; i < 26; i++)
-		printf("%c -> %d %d\n", k + i, isalnum(k + i), ft_isalnum(k + i));
-	k = '0';
-	for(int i = 0; i < 10; i++)
-		printf("%c -> %d %d\n", k + i, isalnum(k + i), ft_isalnum(k + i));
-	printf("%c -> %d %d\n", '\0', isalnum('\0'), ft_isalnum('\0'));
-	printf("%c -> %d %d\n", '\t', isalnum('\t'), ft_isalnum('\t'));
-	printf("%c -> %d %d\n", '\n', isalnum('\n'), ft_isalnum('\n'));
-	printf("%c -> %d %d\n", '!', isalnum('!'), ft_isalnum('!'));
-	printf("%c -> %d %d\n", '(', isalnum('('), ft_isalnum('('));
-	printf("%c -> %d %d\n", '+', isalnum('+'), ft_isalnum('+'));
+	printf("c = %c\n", argv[argc - 1][0]);
+	printf("n1 = %d\n", isalnum(argv[argc - 1][0]));
+	printf("n2 = %d\n", ft_isalnum(argv[argc - 1][0]));
 }

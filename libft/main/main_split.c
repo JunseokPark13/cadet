@@ -3,31 +3,22 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int main(void)
+int main(int argc, char* argv[])
 {
-	//char k[] = "aaaa123aaaaaaaaaaaa456a789a";
-	char k2[] = "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse";
-	//char set = 'a';
+	char **ary;
 
-	//char **str = ft_split(k, set);
-//	char **str2 = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.", 'i');
-	//char **str2 = ft_split("   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ", ' ');
-//	char **str2 = ft_split(k2, ' ');
-	printf("----main----\n");
-	//for(int i = 0; i < 4; i++)
-		//printf("%s\n", str[i]);
+	char *s = argv[1];
+	char c = argv[argc - 1][0];
 
-ft_split(k2, ' ');
-//		write(1, str2[11], strlen(str2[11]));
-//		write(1, "\n", 1);
-		//write(1, str2[12], strlen(str2[12]));
-		//write(1, "\n", 1);
-	for(int i = 0; i < 13; i++)
-	{
-		//printf("%s\n", str2[i]);
-//		write(1, str2[i], strlen(str2[i]));
-//		write(1, "\n", 1);
+	ary = ft_split(s, c);
+
+	int cnt = 0;
+	while (ary[cnt])
+		cnt++;
+
+	for(int i = 0; i < cnt; i++){
+		write(1, ary[i], strlen(ary[i]));
+		write(1, "\n", 1);
 	}
 
-	
 }

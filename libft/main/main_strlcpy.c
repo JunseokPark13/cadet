@@ -1,29 +1,61 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_strlcpy.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/03 13:03:00 by jupark            #+#    #+#             */
+/*   Updated: 2021/05/08 13:13:05 by jupark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft.h"
 
-#include <unistd.h>
 #include <stdio.h>
+#include <unistd.h>
+#include <string.h>
 
-int main(void){
-	char k1[10] = "123456789";
-	char k2[10] = "99999";
-	char k3[10] = "54321";
-	char k4[10] = "777";
-	char k5[10] = "999";
+int main(int argc, char* argv[]){
 
-	size_t len = ft_strlcpy(k2, k1, 5);
-	size_t len2 = ft_strlcpy(k4, k3, 1);
-	size_t len3 = ft_strlcpy(k5, "", 5);
+	char *k, *k2, *k3, *k4;
+	k = (char*)malloc(sizeof(char) * atoi(argv[2]));
+	k2 = (char*)malloc(sizeof(char) * atoi(argv[4]));
+	k3 = (char*)malloc(sizeof(char) * atoi(argv[2]));
+	k4 = (char*)malloc(sizeof(char) * atoi(argv[4]));
+
+	for(int i = 0; i < (int)strlen(argv[1]); i++)
+	{
+		k[i] = argv[1][i];
+		k3[i] = argv[1][i];
+	}
+	for(int i = 0; i < (int)strlen(argv[3]); i++)
+	{
+		k2[i] = argv[3][i];
+		k4[i] = argv[3][i];
+	}
+
+	k[strlen(argv[1])] = '\0';
+	k3[strlen(argv[1])] = '\0';
 	
-	write(1, k2, 10);
-	write(1, "\n", 1);
-	printf("k2 %ld\n", len);
-
-	write(1, k4, 10);
-	write(1, "\n", 1);
-	printf("k4 %ld\n", len2);
-
-	write(1, k5, 10);
-	write(1, "\n", 1);
-	printf("k5 %ld\n", len3);
+	k2[strlen(argv[3])] = '\0';
+	k4[strlen(argv[3])] = '\0';
 	
+	size_t len = atoi(argv[5]);
+
+	printf("argc = %d\n", argc);
+	printf("%s, %s, %ld\n", k, k2, len);
+
+	strlcpy(k, k2, len);
+	ft_strlcpy(k3, k4, len);
+
+	write(1, k, strlen(argv[1]));
+	write(1, "\n", 1);
+	write(1, k3, strlen(argv[1]));
+	write(1, "\n", 1);
+
+	free(k);
+	free(k2);
+	free(k3);
+	free(k4);
 }

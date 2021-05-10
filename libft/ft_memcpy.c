@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 13:26:01 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/06 17:30:09 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/08 10:48:15 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	unsigned char		*tmp_d;
 	const unsigned char *tmp_s;
-	
+
 	if (!dst && !src)
 		return (NULL);
 	tmp_d = (unsigned char*)dst;

@@ -1,31 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_strncmp.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/03 13:03:00 by jupark            #+#    #+#             */
+/*   Updated: 2021/05/08 14:01:22 by jupark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft.h"
 
 #include <stdio.h>
 #include <unistd.h>
+#include <string.h>
 
-int main(void)
-{
-	char s1[] = "123456";
-	char s2[] = "123456";
-	char s3[] = "123496";
-	char s4[] = "";
+int main(int argc, char* argv[]){
 
-	printf("%s, %s : %d\n", s1, s2, strncmp(s1, s2, 7));
-	printf("%s, %s : %d\n", s1, s2, ft_strncmp(s1, s2, 7));
-	
-	printf("%s, %s : %d\n", s1, s3, strncmp(s1, s3, 7));
-	printf("%s, %s : %d\n", s1, s3, ft_strncmp(s1, s3, 7));
-	
-	printf("%s, %s : %d\n", s1, s3, strncmp(s1, s3, 4));
-	printf("%s, %s : %d\n", s1, s3, ft_strncmp(s1, s3, 4));
-	
-	printf("%s, %s : %d\n", s1, s4, strncmp(s1, s4, 7));
-	printf("%s, %s : %d\n", s1, s4, ft_strncmp(s1, s4, 7));
-	
-	printf("%s, %s : %d\n", s4, s1, strncmp(s4, s1, 7));
-	printf("%s, %s : %d\n", s4, s1, ft_strncmp(s4, s1, 7));
-	
+	char *k, *k2, *k3, *k4;
+	k = (char*)malloc(sizeof(char) * atoi(argv[2]));
+	k2 = (char*)malloc(sizeof(char) * atoi(argv[4]));
+	k3 = (char*)malloc(sizeof(char) * atoi(argv[2]));
+	k4 = (char*)malloc(sizeof(char) * atoi(argv[4]));
 
-	printf("%s, %s : %d\n", "test\200", "test\0", strncmp("test\200", "test\0", 6));
-	printf("%s, %s : %d\n", "test\200", "test\0", ft_strncmp("test\200", "test\0", 6));
+	for(int i = 0; i < (int)strlen(argv[1]); i++)
+	{
+		k[i] = argv[1][i];
+		k3[i] = argv[1][i];
+	}
+	for(int i = 0; i < (int)strlen(argv[3]); i++)
+	{
+		k2[i] = argv[3][i];
+		k4[i] = argv[3][i];
+	}
+
+	k[strlen(argv[1])] = '\0';
+	k3[strlen(argv[1])] = '\0';
+	
+	k2[strlen(argv[3])] = '\0';
+	k4[strlen(argv[3])] = '\0';
+	
+	size_t len = atoi(argv[5]);
+
+	printf("%d\n", argc);
+	printf("%s, %s, %ld\n", k, k2, len);
+
+	int n1 = strncmp(k, k2, len);
+	int n2 = strncmp(k3, k4, len);
+
+	printf("n1 = %d\nn2 = %d\n", n1, n2);
+
+	free(k);
+	free(k2);
+	free(k3);
+	free(k4);
 }

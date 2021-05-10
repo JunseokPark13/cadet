@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 15:44:46 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/05 19:34:48 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/08 19:18:21 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int		i;
 	unsigned int		s_len;
 
-	if (!f || !s)
+	if (!s || !f)
 		return (NULL);
 	s_len = ft_strlen(s);
 	tmp = (char*)malloc(sizeof(char) * (s_len + 1));
