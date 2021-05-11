@@ -6,12 +6,11 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 15:26:20 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/10 21:20:01 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/11 16:11:55 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 static int		is_newline(char *str)
 {
@@ -37,41 +36,44 @@ static int		cut_by_index(char **before_s, char **line, int index)
 	return (1);
 }
 
+static int		cut_left_string(char **before_s, char **line)
+{
+	int		newline_i;
+
+	if (!*before_s)
+	{
+		*line = ft_strdup("");
+		return (0);
+	}
+	else if ((newline_i = is_newline(*before_s)) >= 0)
+		return (cut_by_index(before_s, line, newline_i));
+	else
+	{
+		*line = *before_s;
+		*before_s = 0;
+		return (0);
+	}
+}
+
 int				get_next_line(int fd, char **line)
 {
 	static char		*another_f[OPEN_MAX];
-	char		str[BUFFER_SIZE + 1];
-	int			len;
-	int			newline_i;
+	char			str[BUFFER_SIZE + 1];
+	int				len;
+	int				newline_i;
+	int				output;
 
 	if (fd < 0 || !line || BUFFER_SIZE <= 0)
 		return (-1);
-	while((len = (read(fd, str, BUFFER_SIZE))) > 0)
+	while ((len = (read(fd, str, BUFFER_SIZE))) > 0)
 	{
 		str[len] = '\0';
-		printf("read : %s , %d, %d\n", str, len, BUFFER_SIZE);
 		another_f[fd] = ft_strjoin(another_f[fd], str);
-		if ((newline_i = is_newline(another_f[fd])) >= 0){
-			return(cut_by_index(&another_f[fd], line, newline_i));
-		}
+		if ((newline_i = is_newline(another_f[fd])) >= 0)
+			return (cut_by_index(&another_f[fd], line, newline_i));
 	}
 	if (len < 0)
 		return (-1);
-	if (another_f[fd] && (newline_i = is_newline(another_f[fd]) >= 0))
-	{
-		printf("case1 : %d\n", len);
-		printf("newline_i = %d\n", newline_i);
-		return(cut_by_index(&another_f[fd], line, newline_i));
-	}
-	else if (another_f[fd])
-	{
-		printf("case2 : %d\n", len);
-		*line = another_f[fd];
-		another_f[fd] = 0;
-		return (0);
-	}
-		printf("case3 : %d\n", len);
-	*line = ft_strdup("");
-
-	return (0);
+	output = cut_left_string(&another_f[fd], line);
+	return (output);
 }
