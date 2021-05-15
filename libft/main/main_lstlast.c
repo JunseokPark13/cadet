@@ -27,8 +27,8 @@ int main(int argc, char* argv[])
 	node3 = ft_lstnew(argv[argc - 1]);
 
 	ft_lstadd_front(&first, node1);
-	ft_lstadd_front(&node1, node2);
-	ft_lstadd_front(&node2, node3);
+	ft_lstadd_front(&first, node2);
+	ft_lstadd_front(&first, node3);
 
 	print_all_list(node3);
 	printf("\n");

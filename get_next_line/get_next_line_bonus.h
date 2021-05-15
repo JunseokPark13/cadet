@@ -6,14 +6,13 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 15:35:18 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/12 14:11:47 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/13 12:38:17 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 
-# include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
 
