@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 11:18:14 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/17 20:03:39 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/18 17:30:42 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include "./libft/libft.h"
 
 # include <stdio.h>
+
+# define HEXUPPER "0123456789ABCDEF"
+# define HEXLOWER "0123456789abcdef"
 
 typedef struct	s_format
 {
@@ -38,5 +41,8 @@ int				ft_printf(const char *format, ...);
 int				write_nums(unsigned long long num, t_format *f);
 
 void			init_f(t_format *f);
+char			*make_str(int len, char ch);
+char			*ft_itoa_u(unsigned long long n);
+char			*nbr_to_base(unsigned long long n, t_format *f);
 void			print_format(t_format *f);
 #endif

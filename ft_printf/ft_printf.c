@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 11:15:39 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/17 19:32:07 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/18 18:17:02 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,17 @@ static void		check_digit(char *digit, t_format *f, va_list arg)
 {
 	if (digit[0] == '*')
 	{
-		if (*(digit - 1) == '.')
+		if (*(digit - 1) == '.' && f->precision != -1)
 			f->precision = va_arg(arg, int);
-		else
+		else if (!f->width)
 			f->width = va_arg(arg, int);
 	}
 	else if (digit[0] != '0')
 	{
-		if (*(digit - 1)  == '.')
+		//printf("\ndigit : %s, %d\n", digit, ft_atoi(digit));
+		if (*(digit - 1) == '.' && f->precision != -1)
 			f->precision = ft_atoi(digit);
-		else
+		else if (!f->width)
 			f->width = ft_atoi(digit);
 	}
 }
@@ -42,21 +43,25 @@ static void		check_flags(char *format, t_format *f, int i, va_list arg)
 		check_digit(format + i, f, arg);
 }
 
-static void		write_arg(t_format *f, va_list arg)
+static int		write_arg(t_format *f, va_list arg)
 {
+	int output;
+
+	output = 0;
+	if (f->type == 'x' || f->type == 'X' || f->type == 'p')
+		f->base = 16;
 	if(f->type == 'd' || f->type == 'i')
-	{
-		write_nums(va_arg(arg, int), f);
-		//ft_putstr_fd(ft_itoa(va_arg(arg, int)), 1);
-	}
+		output = write_nums(va_arg(arg, int), f);
 	else if (f->type == 'c')
 		ft_putchar_fd(va_arg(arg, int), 1);
 	else if (f->type == 's')
 		ft_putstr_fd(va_arg(arg, char*), 1);
 	else if (f->type == 'p')
-		printf("%lld", va_arg(arg, unsigned long long));
+		output = write_nums(va_arg(arg, unsigned long long), f);
 	else if (f->type == 'x' || f->type == 'X' || f->type == 'u')
-		printf("%x", va_arg(arg, unsigned int));
+		output = write_nums(va_arg(arg, unsigned int), f);
+	free(f);	
+	return (output);
 }
 
 static int	check_format(char *format, va_list arg, int *index)
@@ -71,10 +76,8 @@ static int	check_format(char *format, va_list arg, int *index)
 	while (!ft_strchr("cspdiuxX", format[i]) && format[i] && !ft_isalpha(format[i]))
 		check_flags(format, f, i++, arg);
 	f->type = format[i++];
-	//print_format(f);
-	write_arg(f, arg);
 	*index += i + 1;
-	return (i);
+	return (write_arg(f, arg));
 }
 
 int		ft_printf(const char *format, ...)
@@ -100,5 +103,5 @@ int		ft_printf(const char *format, ...)
 
 	va_end(arg);
 
-	return (0);
+	return (len);
 }

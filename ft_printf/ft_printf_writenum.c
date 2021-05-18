@@ -6,54 +6,70 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:28:30 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/17 20:27:57 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/18 18:17:13 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char*	make_str(int len, char ch)
+void		assemble_nums(char *nbr, size_t len, t_format *f)
 {
-	int 	i;
-	char 	*str;
+	char *prec;
+	char *width;
+	char *join;
 
-	if(!(str = (char*)malloc(sizeof(char) * len + 1)))
-		return (NULL);
-	str[len] = '\0';
-	i = 0;
-	while(i < len)
-		str[i++] = ch;
-	return (str);
+	prec = make_str(f->precision - len, '0');
+	if (f->sign == -1)
+		len++;
+	if (f->zero)
+		width = make_str(f->width - (len + ft_strlen(prec)), '0');
+	else
+		width = make_str(f->width - (len + ft_strlen(prec)), ' ');
+	if (f->sign == -1 && f->zero)
+		ft_putchar_fd('-', 1);
+	if (!f->hyphen)
+		ft_putstr_fd(width, 1);
+	if (f->sign == -1 && !f->zero)
+		ft_putchar_fd('-', 1);
+	join = ft_strjoin(prec, nbr);
+	ft_putstr_fd(join, 1);
+	if (f->hyphen)
+		ft_putstr_fd(width, 1);
+	free(width);
+	free(prec);
+	free(nbr);
+	free(join);
 }
 
-
-int		write_nums(unsigned long long num, t_format *f)
+int			get_length(t_format *f, int len)
 {
-	
-	int		len;
-	char	*prec;
-	char	*width;
-	char	*nbr;
+	if (f->width < f->precision)
+	{
+		if (f->sign == -1)
+			return (f->precision + 1);
+		else
+			return (f->precision);
+	}
+	else if (f->width < (int)len && f->precision < (int)len)
+		return (len);
+	else
+		return (f->width);
+}
 
-	if ((int)num < 0)
+int			write_nums(unsigned long long num, t_format *f)
+{
+	size_t		len;
+	char		*nbr;
+
+	if ((f->type == 'd' || f->type == 'i') && (int)num < 0)
 	{
 		f->sign = -1;
 		num = num * (-1);
 	}
-
-	nbr = ft_itoa(num);
+	if (f->precision != -1)
+		f->zero = 0;
+	nbr = nbr_to_base(num, f);
 	len = ft_strlen(nbr);
-	prec = make_str(f->precision - len, '0');
-	if (f->sign == -1)
-		len++;
-	width = make_str(f->width - (len + ft_strlen(prec)), ' ');
-	//printf("width len : %d\n", f->width);
-	//printf("len : %d\n", len);
-	//printf("precision eln : %d\n", f->precision);
-	//printf("width : %s\nwidth len = %d\n", width, f->width - len - f->precision);
-	ft_putstr_fd(width, 1);
-	if (f->sign == -1)
-		ft_putchar_fd('-', 1);
-	ft_putstr_fd(ft_strjoin(prec, nbr), 1);
-	return (0);
+	assemble_nums(nbr, len, f);
+	return (get_length(f, len));
 }
