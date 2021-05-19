@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 22:05:39 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/19 22:58:03 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/19 23:05:05 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,24 @@ static int	get_length(int len, t_format *f)
 int			write_str(char *str, t_format *f)
 {
 	int		len;
-
-	len  = ft_strlen(str);
-	print_str(str, len, f);
+	
+	if (str == NULL)
+	{
+		if (f->precision < 6)
+		{
+			len = 0;
+			print_str("", len, f);
+		}
+		else
+		{
+			len = 6;
+			print_str("(null)", len, f);
+		}
+	}
+	else
+	{
+		len  = ft_strlen(str);
+		print_str(str, len, f);
+	}
 	return (get_length(len, f));
 }
