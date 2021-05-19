@@ -8,9 +8,9 @@ void	test(unsigned int num)
 
 int main(void)
 {
-	char *str = "12345";
-	int origin = printf("printf    : ABCDE%15pPPPPP\n", str);
-	int ft =  ft_printf("ft_printf : ABCDE%15pPPPPP\n", str);
+	char *str = "1234567890";
+	int origin = printf("printf    : ABCDE%12.15sPPPPP\n", str);
+	int ft =  ft_printf("ft_printf : ABCDE%12.15sPPPPP\n", str);
 
 
 	printf("origin = %d\nft = %d\n", origin, ft);

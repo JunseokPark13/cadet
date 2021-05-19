@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 11:15:39 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/18 18:17:02 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/19 22:05:26 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void		check_digit(char *digit, t_format *f, va_list arg)
 	}
 	else if (digit[0] != '0')
 	{
-		//printf("\ndigit : %s, %d\n", digit, ft_atoi(digit));
 		if (*(digit - 1) == '.' && f->precision != -1)
 			f->precision = ft_atoi(digit);
 		else if (!f->width)
@@ -53,9 +52,9 @@ static int		write_arg(t_format *f, va_list arg)
 	if(f->type == 'd' || f->type == 'i')
 		output = write_nums(va_arg(arg, int), f);
 	else if (f->type == 'c')
-		ft_putchar_fd(va_arg(arg, int), 1);
+		output = write_char(va_arg(arg, int), f);
 	else if (f->type == 's')
-		ft_putstr_fd(va_arg(arg, char*), 1);
+		output = write_str(va_arg(arg, char*), f);
 	else if (f->type == 'p')
 		output = write_nums(va_arg(arg, unsigned long long), f);
 	else if (f->type == 'x' || f->type == 'X' || f->type == 'u')
@@ -64,7 +63,7 @@ static int		write_arg(t_format *f, va_list arg)
 	return (output);
 }
 
-static int	check_format(char *format, va_list arg, int *index)
+static int		check_format(char *format, va_list arg, int *index)
 {
 	int i;
 	t_format *f;
@@ -80,7 +79,7 @@ static int	check_format(char *format, va_list arg, int *index)
 	return (write_arg(f, arg));
 }
 
-int		ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
 	int		i;
 	int		len;
