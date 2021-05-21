@@ -5,14 +5,18 @@ void	test(unsigned int num)
 	printf("%d\n", (unsigned int)num);
 }
 
+#include <limits.h>
 
 int main(void)
 {
-	char *str = "01234567890";
-	int origin = printf("printf    : ABCDE%-10.*dPPPPP%15.5sKKKKK\n", 3, 123, str);
-	int ft =  ft_printf("ft_printf : ABCDE%-10.*dPPPPP%15.5sKKKKK\n", 3, 123, str);
-
+	
+//	char *str = "0123456789";
+	int origin = printf("printf    : [%*s]\n",300, "Wow");
+	int ft =  ft_printf("ft_printf : [%*s]\n",300, "Wow");
+//				 printf("printf    : ABCDE%0*.*dKKKKK\n", 1, 0, 0);
+//			  ft_printf("ft_printf : ABCDE%0*.*dKKKKK\n", 1, 0, 0);
 
 	printf("origin = %d\nft = %d\n", origin, ft);
+//	while(1);
 	return (0);
 }

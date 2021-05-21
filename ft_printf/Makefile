@@ -6,7 +6,7 @@
 #    By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/17 11:27:55 by jupark            #+#    #+#              #
-#    Updated: 2021/05/19 22:11:52 by jupark           ###   ########.fr        #
+#    Updated: 2021/05/21 17:49:23 by jupark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,9 @@ CFLAGS = -Wall -Wextra -Werror
 LIBFT = libft
 LIBFT_A = libft.a
 
-SRCS = ft_printf.c ft_printf_utils.c ft_printf_writenum.c \
-	   ft_printf_writechar.c ft_printf_writestr.c
+SRCS = ft_printf.c ft_printf_utils.c ft_writenum.c \
+	   ft_writechar.c ft_writestr.c \
+	   ft_nbr_to_base.c
 OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)

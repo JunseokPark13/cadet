@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 15:24:49 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/18 14:49:52 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/21 18:00:02 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ char			*ft_itoa(int n)
 	int		len;
 	char	*nstr;
 
-	
 	if (n == 0)
 		return (ft_strdup("0"));
 	len = ft_checklength(n);
