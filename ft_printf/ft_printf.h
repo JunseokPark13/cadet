@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 11:18:14 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/21 18:38:00 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/24 22:09:10 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ typedef struct	s_format
 
 int				ft_printf(const char *format, ...);
 
-size_t			write_nums(unsigned long long num, t_format *f);
-size_t			write_char(int ch, t_format *f);
-size_t			write_str(char *str, t_format *f);
+int			write_nums(unsigned long long num, t_format *f);
+int			write_char(int ch, t_format *f);
+int			write_str(char *str, t_format *f);
 
 void			init_f(t_format *f);
 char			*make_str(int len, char ch);

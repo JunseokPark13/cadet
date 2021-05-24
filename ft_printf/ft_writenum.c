@@ -6,19 +6,19 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:28:30 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/21 18:37:26 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/24 22:10:27 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static size_t	join_nums(char *width, char *join, t_format *f)
+static int		join_nums(char *width, char *join, t_format *f)
 {
 	char	*res;
 	size_t	len;
 
 	if (!(res = (char*)malloc(sizeof(char) * 1)))
-		return (0);
+		return (-1);
 	res[0] = '\0';
 	if (f->sign == -1 && f->zero)
 		res = add_hyphen(res);
@@ -35,12 +35,12 @@ static size_t	join_nums(char *width, char *join, t_format *f)
 	return (len);
 }
 
-static size_t	assemble_nums(char *nbr, size_t len, t_format *f)
+static int		assemble_nums(char *nbr, size_t len, t_format *f)
 {
 	char	*prec;
 	char	*width;
 	char	*join;
-	size_t	res_len;
+	int		res_len;
 
 	prec = make_str(f->precision - len, '0');
 	if (f->sign == -1)
@@ -56,9 +56,9 @@ static size_t	assemble_nums(char *nbr, size_t len, t_format *f)
 	return (res_len);
 }
 
-size_t			write_nums(unsigned long long num, t_format *f)
+int				write_nums(unsigned long long num, t_format *f)
 {
-	size_t		len;
+	int			len;
 	char		*nbr;
 
 	if ((f->type == 'd' || f->type == 'i') && (int)num < 0)

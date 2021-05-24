@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 16:03:26 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/21 17:54:18 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/24 22:26:27 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char			*make_str(int len, char ch)
 	if (len <= 0)
 		len = 0;
 	if (!(str = (char*)malloc(sizeof(char) * len + 1)))
-		return (NULL);
+		return ((char*)(-1));
 	str[len] = '\0';
 	i = 0;
 	while (i < len)
@@ -57,6 +57,8 @@ char			*join_strs(char *left, char *right)
 {
 	char	*res;
 
+	if (left == (char*)(-1) || right == (char*)(-1))
+		return ((char*)(-1));
 	res = ft_strjoin(left, right);
 	free(left);
 	free(right);
@@ -69,7 +71,7 @@ char			*add_hyphen(char *str)
 	char	*hyphen;
 
 	if (!(hyphen = (char*)malloc(sizeof(char) * 2)))
-		return (NULL);
+		return ((char*)(-1));
 	hyphen[0] = '-';
 	hyphen[1] = '\0';
 	res = ft_strjoin(str, hyphen);

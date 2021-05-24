@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 11:15:39 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/21 18:36:14 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/24 22:15:12 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ static void		check_flags(char *format, t_format *f, int i, va_list arg)
 		check_digit(format + i, f, arg);
 }
 
-static size_t	write_arg(t_format *f, va_list arg)
+static int		write_arg(t_format *f, va_list arg)
 {
-	size_t	output;
+	int		output;
 
 	output = 0;
 	if (f->type == 'x' || f->type == 'X' || f->type == 'p')
@@ -81,13 +81,13 @@ static size_t	write_arg(t_format *f, va_list arg)
 	return (output);
 }
 
-static size_t	check_format(char *format, va_list arg, int *index)
+static int		check_format(char *format, va_list arg, int *index)
 {
 	int			i;
 	t_format	*f;
 
 	if (!(f = (t_format*)malloc(sizeof(t_format))))
-		return (0);
+		return (-1);
 	init_f(f);
 	i = 0;
 	while (!ft_strchr("cspdiuxX%", format[i]) && format[i]
@@ -101,7 +101,8 @@ static size_t	check_format(char *format, va_list arg, int *index)
 int				ft_printf(const char *format, ...)
 {
 	int		i;
-	size_t	len;
+	int		len;
+	int		tmp;
 	va_list arg;
 
 	va_start(arg, format);
@@ -111,13 +112,17 @@ int				ft_printf(const char *format, ...)
 	{
 		while (format[i] != '%' && format[i])
 		{
-			ft_putchar_fd(format[i], 1);
-			i++;
+			ft_putchar_fd(format[i++], 1);
 			len++;
 		}
 		if (format[i] == '%')
+		{
+			tmp = len;
 			len += check_format((char*)format + i + 1, arg, &i);
+			if (tmp > len)
+				return (-1);
+		}
 	}
 	va_end(arg);
-	return ((int)len);
+	return (len);
 }

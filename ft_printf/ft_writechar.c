@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 15:55:18 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/21 18:38:37 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/24 22:10:48 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void		print_char(char c, t_format *f)
 	free(width);
 }
 
-size_t			write_char(int ch, t_format *f)
+int				write_char(int ch, t_format *f)
 {
 	char c;
 
@@ -37,5 +37,5 @@ size_t			write_char(int ch, t_format *f)
 	if (!f->width)
 		return (1);
 	else
-		return ((size_t)f->width);
+		return (f->width);
 }

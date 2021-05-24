@@ -6,19 +6,19 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 22:05:39 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/21 18:41:47 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/24 22:11:27 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static size_t	join_string(char *width, char *str, size_t len, t_format *f)
+static int		join_string(char *width, char *str, size_t len, t_format *f)
 {
 	char	*res;
-	size_t	res_len;
+	int		res_len;
 
 	if (!(res = (char*)malloc(sizeof(char) * 1)))
-		return (0);
+		return (-1);
 	res[0] = '\0';
 	if (!f->hyphen)
 		res = join_strs(width, res);
@@ -39,7 +39,7 @@ static size_t	join_string(char *width, char *str, size_t len, t_format *f)
 	return (res_len);
 }
 
-static size_t	print_str(char *str, size_t len, t_format *f)
+static int		print_str(char *str, size_t len, t_format *f)
 {
 	char *width;
 
@@ -55,9 +55,9 @@ static size_t	print_str(char *str, size_t len, t_format *f)
 	return (join_string(width, str, len, f));
 }
 
-size_t			write_str(char *str, t_format *f)
+int				write_str(char *str, t_format *f)
 {
-	size_t	len;
+	int		len;
 
 	if (f->precision < 0)
 		f->dot = 0;
