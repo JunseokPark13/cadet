@@ -6,19 +6,19 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 22:05:39 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/24 22:11:27 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/25 14:55:24 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		join_string(char *width, char *str, size_t len, t_format *f)
+static int		join_string(char *width, char *str, int len, t_format *f)
 {
 	char	*res;
 	int		res_len;
 
 	if (!(res = (char*)malloc(sizeof(char) * 1)))
-		return (-1);
+		return (-2);
 	res[0] = '\0';
 	if (!f->hyphen)
 		res = join_strs(width, res);
@@ -33,6 +33,8 @@ static int		join_string(char *width, char *str, size_t len, t_format *f)
 		res = join_strs(res, ft_substr(str, 0, len));
 	if (f->hyphen)
 		res = join_strs(res, width);
+	if (res == (char*)(-1))
+		return (-1);
 	ft_putstr_fd(res, 1);
 	res_len = ft_strlen(res);
 	free(res);
@@ -41,7 +43,8 @@ static int		join_string(char *width, char *str, size_t len, t_format *f)
 
 static int		print_str(char *str, size_t len, t_format *f)
 {
-	char *width;
+	char	*width;
+	int		out;
 
 	if (!f->dot)
 		width = make_str(f->width - len, ' ');
@@ -52,7 +55,15 @@ static int		print_str(char *str, size_t len, t_format *f)
 		else
 			width = make_str(f->width - len, ' ');
 	}
-	return (join_string(width, str, len, f));
+	if (width == (char*)(-1))
+		return (-1);
+	out = join_string(width, str, len, f);
+	if (out == -2)
+	{
+		free(width);
+		return (-1);
+	}
+	return (out);
 }
 
 int				write_str(char *str, t_format *f)

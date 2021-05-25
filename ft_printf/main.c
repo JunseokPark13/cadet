@@ -1,5 +1,5 @@
 #include "ft_printf.h"
-
+#include <stdio.h>
 void	test(unsigned int num)
 {
 	printf("%d\n", (unsigned int)num);
@@ -11,12 +11,13 @@ int main(void)
 {
 	
 //	char *str = "0123456789";
-//	int origin = printf("printf    : [%s]\n", 123);
-	int ft =  ft_printf("ft_printf : [%s]\n", 123);
-//				 printf("printf    : ABCDE%0*.*dKKKKK\n", 1, 0, 0);
-//			  ft_printf("ft_printf : ABCDE%0*.*dKKKKK\n", 1, 0, 0);
+//	char *p = NULL;
+	int origin = printf("printf    : [%-20.3d]\n", INT_MIN);
+	int ft =  ft_printf("ft_printf : [%-20.3d]\n", INT_MIN);
+//				 printf("printf    : ABCDE%-12.5rKKKKK\n");
+//			  ft_printf("ft_printf : ABCDE%-12.5rKKKKK\n");
 
-//	printf("origin = %d\nft = %d\n", origin, ft);
-//	while(1);
+	printf("origin = %d\nft = %d\n", origin, ft);
+	//system("Leaks test");
 	return (0);
 }

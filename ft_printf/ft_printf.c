@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 11:15:39 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/24 22:15:12 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/25 13:53:27 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void		check_digit(char *digit, t_format *f, va_list arg)
 
 static void		check_flags(char *format, t_format *f, int i, va_list arg)
 {
-	if (format[i] == '0' && f->width == 0 && f->dot == 0)
+	if (format[i] == '0' && f->width == 0 && f->dot == 0 && !f->hyphen)
 		f->zero = 1;
 	else if (format[i] == '-')
 	{
@@ -77,6 +77,8 @@ static int		write_arg(t_format *f, va_list arg)
 		output = write_nums(va_arg(arg, unsigned int), f);
 	else if (f->type == '%')
 		output = write_char('%', f);
+	else
+		output = write_char(f->type, f);
 	free(f);
 	return (output);
 }

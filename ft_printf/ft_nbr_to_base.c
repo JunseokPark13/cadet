@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 11:24:25 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/21 17:53:02 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/25 11:15:09 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char			*nbr_to_base(unsigned long long n, t_format *f)
 
 	len = count_base(n, f);
 	if (!(nstr = (char*)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
+		return ((char*)(-1));
 	i = 1;
 	if (!n)
 		nstr[len - 1] = '0';

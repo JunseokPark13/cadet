@@ -6,24 +6,11 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 16:03:26 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/24 22:26:27 by jupark           ###   ########.fr       */
+/*   Updated: 2021/05/25 15:22:37 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void			print_format(t_format *f)
-{
-	printf("\n---------------------------\n");
-	printf("hyphen = %d\n", f->hyphen);
-	printf("zero = %d\n", f->zero);
-	printf("width = %d\n", f->width);
-	printf("dot = %d\n", f->dot);
-	printf("precision = %d\n", f->precision);
-	printf("base = %d\n", f->base);
-	printf("type = %c\n", f->type);
-	printf("---------------------------\n");
-}
 
 void			init_f(t_format *f)
 {
@@ -58,8 +45,15 @@ char			*join_strs(char *left, char *right)
 	char	*res;
 
 	if (left == (char*)(-1) || right == (char*)(-1))
+	{
+		if (left != (char*)(-1))
+			free(left);
+		if (right != (char*)(-1))
+			free(right);
 		return ((char*)(-1));
-	res = ft_strjoin(left, right);
+	}
+	if (!(res = ft_strjoin(left, right)))
+		res = (char*)(-1);
 	free(left);
 	free(right);
 	return (res);
@@ -71,10 +65,15 @@ char			*add_hyphen(char *str)
 	char	*hyphen;
 
 	if (!(hyphen = (char*)malloc(sizeof(char) * 2)))
+	{
+		if (str != (char*)(-1))
+			free(str);
 		return ((char*)(-1));
+	}
 	hyphen[0] = '-';
 	hyphen[1] = '\0';
-	res = ft_strjoin(str, hyphen);
+	if (!(res = ft_strjoin(str, hyphen)))
+		res = (char*)(-1);
 	free(hyphen);
 	free(str);
 	return (res);

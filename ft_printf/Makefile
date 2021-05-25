@@ -6,7 +6,7 @@
 #    By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/17 11:27:55 by jupark            #+#    #+#              #
-#    Updated: 2021/05/21 17:49:23 by jupark           ###   ########.fr        #
+#    Updated: 2021/05/25 12:00:58 by jupark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,19 +25,18 @@ OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
 
-lib : 
+$(NAME) : $(OBJS)
 	make all -C $(LIBFT)
 	cp $(LIBFT)/$(LIBFT_A) $(NAME)
-	make fclean -C $(LIBFT)
-
-$(NAME) : lib $(OBJS)
 	ar rc $@ $(OBJS)
 
 clean : 
 	rm -f $(OBJS)
+	make clean -C $(LIBFT)
 
 fclean : clean
 	rm -f $(NAME)
+	make fclean -C $(LIBFT)
 
 re : clean all
 
