@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 17:06:52 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/31 18:37:46 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/01 00:04:56 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,6 @@ t_list	*ft_lstnew()
 	lst->head = NULL;
 	lst->tail = NULL;
 	return (lst);
-}
-
-t_node	*ft_lstlast(t_node *lst)
-{
-	t_node	*next_n;
-	
-	if(!lst)
-		return (NULL);
-	next_n = lst;
-	while(next_n->next)
-		next_n = next_n->next;
-	return (next_n);
 }
 
 void	ft_lstadd_back(t_list *lst, t_node *new_n)

@@ -6,7 +6,7 @@
 #    By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/17 11:27:55 by jupark            #+#    #+#              #
-#    Updated: 2021/05/31 18:11:44 by jupark           ###   ########.fr        #
+#    Updated: 2021/05/31 21:50:26 by jupark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 
-SRCS = push_swap.c util.c list.c list2.c 
+SRCS = push_swap.c util.c list.c list2.c command.c  
 OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
