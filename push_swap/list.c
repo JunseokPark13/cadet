@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 17:06:52 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/01 00:04:56 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/01 11:45:12 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_list	*ft_lstnew()
 		exit(1);
 	lst->head = NULL;
 	lst->tail = NULL;
+	lst->cnt = 0;
 	return (lst);
 }
 
@@ -46,6 +47,7 @@ void	ft_lstadd_back(t_list *lst, t_node *new_n)
 	{
 		lst->head = new_n;
 		lst->tail = new_n;
+		lst->cnt += 1;
 		return ;
 	}
 	head = lst->head;
@@ -55,6 +57,7 @@ void	ft_lstadd_back(t_list *lst, t_node *new_n)
 	new_n->next = head;
 	new_n->prev = tail;
 	lst->head = new_n;
+	lst->cnt += 1;
 }
 
 void	ft_lstadd_front(t_list *lst, t_node *new_n)
@@ -66,6 +69,7 @@ void	ft_lstadd_front(t_list *lst, t_node *new_n)
 	{
 		lst->head = new_n;
 		lst->tail = new_n;
+		lst->cnt += 1;
 		return ;
 	}
 	head = lst->head;
@@ -75,4 +79,5 @@ void	ft_lstadd_front(t_list *lst, t_node *new_n)
 	new_n->next = head;
 	new_n->prev = tail;
 	lst->tail = new_n;
+	lst->cnt += 1;
 }

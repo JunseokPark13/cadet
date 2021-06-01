@@ -5,55 +5,48 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/31 16:03:12 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/01 00:27:29 by jupark           ###   ########.fr       */
+/*   Created: 2021/06/01 17:56:01 by jupark            #+#    #+#             */
+/*   Updated: 2021/06/01 19:50:17 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char* argv[])
+void	A_to_B(t_stacks *stack, int size)
 {
-	t_list *lst;
-	t_list *lst2;
-	t_node *tmp;
+	
+	t_node	*head;
+	int		ra_cnt;
+	int		rb_cnt;
+	int		i;
 
-	lst = ft_lstnew();
-	lst2 = ft_lstnew();
+	ra_cnt = 0;
+	rb_cnt = 0;
+	i = 0;
+	//	ft_printlst_two(stack->lst_a, stack->lst_b);
+//	printf("p1 = %d\np2 = %d\n\n", stack->p1, stack->p2);
 
-	if (argc <= 1)
-		ft_putstr(NOTENOUGHARG);	
-	for(int i = 1; i < argc; i++){
-		printf("%d\n", ft_atoi(argv[i]));
-		tmp = ft_nodenew(ft_atoi(argv[i]));
-		ft_lstadd_front(lst, tmp);
+	head = stack->lst_a->head;
+	while (size--)
+	{
+		if (head->num >= stack->p2)
+		{
+			ft_ra(stack);
+			ra_cnt++;
+		}
+		else
+		{
+			ft_pb(stack);
+			if (stack->lst_b->head->num >= stack->p1)
+			{
+				ft_rb(stack);
+				rb_cnt++;
+			}
+		}
+		head = stack->lst_a->head;
 	}
-
-	tmp = ft_nodenew(10);
-	ft_lstadd_front(lst2, tmp);
-	tmp = ft_nodenew(15);
-	ft_lstadd_front(lst2, tmp);
-	tmp = ft_nodenew(20);
-	ft_lstadd_front(lst2, tmp);
-	
-
-	printf("lst : \n");
-	ft_printlst_front(lst);
-	printf("\n");
-	
-	printf("lst2 : \n");
-	ft_printlst_front(lst2);
-	printf("\n");
-	printf("\n");
-	printf("\n");
-
-	ft_push(lst, lst2);
-	printf("lst : \n");
-	ft_printlst_front(lst);
-	printf("\n");
-	printf("lst2 : \n");
-	ft_printlst_front(lst2);
-	printf("\n");
-
-	return (0);
+	printf("%d %d\n", ra_cnt, rb_cnt);
+	while (i < ra_cnt && i++ < rb_cnt)
+		ft_rrr(stack);
+	ft_printlst_two(stack->lst_a, stack->lst_b);
 }
