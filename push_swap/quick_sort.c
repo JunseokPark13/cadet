@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 16:59:26 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/01 19:22:24 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/02 19:05:46 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,37 @@ void			ft_quick_sort(int *ary, int left, int right)
 void			ft_get_pivot(int *ary, int length, int *p1, int *p2)
 {
 	int		pos;
+
 	ft_quick_sort(ary, 0, length - 1);
-	pos = length / 3;
-//	for(int i = 0; i < length; i++)
-//		printf("%d\n", ary[i]);
-	*p1 = ary[pos];
-	*p2 = ary[pos * 2];
+	if (length == 3)
+	{
+		printf("%d %d %d\n", ary[0], ary[1], ary[2]);
+		*p1 = ary[1];
+		*p2 = ary[2];
+	}
+	else{
+		pos = length / 3;
+		*p1 = ary[pos];
+		*p2 = ary[pos * 2];
+	}
+}
+
+void			get_pivot_from_lst(t_stacks *stack, t_list *lst, int size)
+{
+	t_node	*head;
+	int		ary[size];
+	int		i;
+
+	head = lst->head;
+	i = -1;
+	printf("lst len = %d\n", ft_lstcnt(lst));
+	while (++i < size)
+	{
+		//if (i > 1 && head == lst->head)
+		//	break;
+		ary[i] = head->num;
+		head = head->next;
+	}
+	ft_get_pivot(ary, size, &(stack->p1), &(stack->p2));
+	printf("%d to %d (%d) => %d, %d\n", ary[0], ary[size - 1], size, stack->p1, stack->p2);
 }

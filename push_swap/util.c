@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 16:53:00 by jupark            #+#    #+#             */
-/*   Updated: 2021/05/31 18:17:53 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/02 19:00:59 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,23 @@ int			ft_atoi(const char *nptr)
 			return (0);
 	}
 	return ((num * sign));
+}
+
+int			ft_lstcnt(t_list *lst)
+{
+	t_node	*head;
+	int		cnt;
+
+	head = lst->head;
+	if (!head)
+		return (0);
+	cnt = 0;
+	while (1)
+	{
+		if (cnt > 0 && head == lst->head)
+			break;
+		cnt++;
+		head = head->next;
+	}
+	return (cnt);
 }

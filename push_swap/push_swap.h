@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 16:03:21 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/01 19:19:39 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/02 18:59:38 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,16 @@ typedef struct		s_stacks
 	t_list			*lst_b;
 	int				p1;
 	int				p2;
+	int				pa_cnt;
+	int				pb_cnt;
+	int				ra_cnt;
+	int				rb_cnt;
 }					t_stacks;
 
 size_t				ft_strlen(char *str);
 void				ft_putstr(char *str);
 int					ft_atoi(const char *nptr);
+int					ft_lstcnt(t_list *lst);
 
 t_node				*ft_nodenew(int num);
 t_list				*ft_lstnew();
@@ -73,8 +78,10 @@ void				ft_push(t_list *lst1, t_list *lst2);
 
 void				ft_quick_sort(int *ary, int left, int right);
 void				ft_get_pivot(int *ary, int length, int *p1, int *p2);
+void				get_pivot_from_lst(t_stacks *stack, t_list *lst, int size);
 
-void				A_to_B(t_stacks *stack, int size);
+void				a_to_b(t_stacks *stack, int size);
+void				b_to_a(t_stacks *stack, int size);
 
 void				ft_printlst_front(t_list *lst);
 void				ft_printlst_two(t_list *lst1, t_list *lst2);
