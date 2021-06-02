@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 19:17:45 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/01 19:18:46 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/02 20:42:18 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_rra(t_stacks *stack)
 	tail = stack->lst_a->tail;
 	stack->lst_a->head = head->prev;
 	stack->lst_a->tail = tail->prev;
+	write(1, "rra\n", 4);
 }
 
 void	ft_rrb(t_stacks *stack)
@@ -36,6 +37,7 @@ void	ft_rrb(t_stacks *stack)
 	tail = stack->lst_b->tail;
 	stack->lst_b->head = head->prev;
 	stack->lst_b->tail = tail->prev;
+	write(1, "rrb\n", 4);
 }
 
 void	ft_rrr(t_stacks *stack)

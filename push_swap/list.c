@@ -6,13 +6,13 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 17:06:52 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/01 11:45:12 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/02 21:51:37 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*ft_nodenew(int num)
+t_node		*ft_nodenew(int num)
 {
 	t_node	*node;
 
@@ -25,7 +25,7 @@ t_node	*ft_nodenew(int num)
 	return (node);
 }
 
-t_list	*ft_lstnew()
+t_list		*ft_lstnew()
 {
 	t_list	*lst;
 
@@ -36,6 +36,22 @@ t_list	*ft_lstnew()
 	lst->tail = NULL;
 	lst->cnt = 0;
 	return (lst);
+}
+
+t_stacks	*ft_stacknew(t_list *lst_a, t_list *lst_b)
+{
+	t_stacks	*stack;
+
+	stack = (t_stacks*)malloc(sizeof(t_stacks));
+	if (!stack)
+		exit(1);
+	stack->lst_a = lst_a;
+	stack->lst_b = lst_b;
+	stack->p1 = 0;
+	stack->p2 = 0;
+	stack->r_cnt = 0;
+	stack->p_cnt = 0;
+	return (stack);
 }
 
 void	ft_lstadd_back(t_list *lst, t_node *new_n)

@@ -6,11 +6,17 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 17:16:44 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/01 11:27:33 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/02 21:58:53 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_stackcnt_init(t_stacks *stack)
+{
+	stack->r_cnt = 0;
+	stack->p_cnt = 0;
+}
 
 void	ft_lstdelone(t_node *node)
 {

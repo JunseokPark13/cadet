@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 16:59:26 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/02 20:43:15 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/02 19:05:46 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,22 @@ void			ft_quick_sort(int *ary, int left, int right)
 	}
 }
 
-void			ft_get_pivot(int *ary, int length, int *p1)
+void			ft_get_pivot(int *ary, int length, int *p1, int *p2)
 {
+	int		pos;
+
 	ft_quick_sort(ary, 0, length - 1);
-	/*
-		printf("ary : ");
-		for(int i = 0; i < length; i++)
-		printf("%d ", ary[i]);
-		printf("\n");
-	*/
-	if (length == 2)
-		*p1 = ary[0];
-	else
-		*p1 = ary[length / 2];
+	if (length == 3)
+	{
+		printf("%d %d %d\n", ary[0], ary[1], ary[2]);
+		*p1 = ary[1];
+		*p2 = ary[2];
+	}
+	else{
+		pos = length / 3;
+		*p1 = ary[pos];
+		*p2 = ary[pos * 2];
+	}
 }
 
 void			get_pivot_from_lst(t_stacks *stack, t_list *lst, int size)
@@ -78,7 +81,7 @@ void			get_pivot_from_lst(t_stacks *stack, t_list *lst, int size)
 
 	head = lst->head;
 	i = -1;
-	//printf("lst len = %d\n", ft_lstcnt(lst));
+	printf("lst len = %d\n", ft_lstcnt(lst));
 	while (++i < size)
 	{
 		//if (i > 1 && head == lst->head)
@@ -86,5 +89,6 @@ void			get_pivot_from_lst(t_stacks *stack, t_list *lst, int size)
 		ary[i] = head->num;
 		head = head->next;
 	}
-	ft_get_pivot(ary, size, &(stack->p1));
+	ft_get_pivot(ary, size, &(stack->p1), &(stack->p2));
+	printf("%d to %d (%d) => %d, %d\n", ary[0], ary[size - 1], size, stack->p1, stack->p2);
 }

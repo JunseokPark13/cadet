@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 19:05:11 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/01 19:25:17 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/02 20:40:29 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void		ft_sa(t_stacks *stack)
 	tmp = first->num;
 	first->num = second->num;
 	second->num = tmp;
+	write(1, "sa\n", 3);
 }
 
 void		ft_sb(t_stacks *stack)
@@ -44,6 +45,7 @@ void		ft_sb(t_stacks *stack)
 	tmp = first->num;
 	first->num = second->num;
 	second->num = tmp;
+	write(1, "sb\n", 3);
 }
 
 void		ft_ss(t_stacks *stack)
