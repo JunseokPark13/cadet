@@ -1,49 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rotate.c                                        :+:      :+:    :+:   */
+/*   ft_rrotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/01 19:15:09 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/03 21:02:53 by jupark           ###   ########.fr       */
+/*   Created: 2021/06/01 19:17:45 by jupark            #+#    #+#             */
+/*   Updated: 2021/06/03 21:36:19 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_ra(t_stacks *stack)
+void	ft_rra(t_stacks *stack)
 {
 	t_node	*head;
 	t_node	*tail;
 
-	stack->r_cnt += 1;
 	if (!stack->lst_a->cnt || stack->lst_a->cnt == 1)
 		return ;
 	head = stack->lst_a->head;
 	tail = stack->lst_a->tail;
-	stack->lst_a->head = head->next;
-	stack->lst_a->tail = tail->next;
-	write(1, "ra\n", 3);
+	stack->lst_a->head = head->prev;
+	stack->lst_a->tail = tail->prev;
+	if (!stack->isprint)
+		write(1, "rra\n", 4);
 }
 
-void	ft_rb(t_stacks *stack)
+void	ft_rrb(t_stacks *stack)
 {
 	t_node	*head;
 	t_node	*tail;
 
-	stack->r_cnt += 1;
 	if (!stack->lst_b->cnt || stack->lst_b->cnt == 1)
 		return ;
 	head = stack->lst_b->head;
 	tail = stack->lst_b->tail;
-	stack->lst_b->head = head->next;
-	stack->lst_b->tail = tail->next;
-	write(1, "rb\n", 3);
+	stack->lst_b->head = head->prev;
+	stack->lst_b->tail = tail->prev;
+	if (!stack->isprint)
+		write(1, "rrb\n", 4);
 }
 
-void	ft_rr(t_stacks *stack)
+void	ft_rrr(t_stacks *stack)
 {
-	ft_ra(stack);
-	ft_rb(stack);
+	stack->isprint = 1;
+	ft_rra(stack);
+	ft_rrb(stack);
+	write(1, "rrr\n", 4);
 }

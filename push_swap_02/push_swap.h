@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 16:03:21 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/03 19:32:13 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/03 23:40:47 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ typedef struct		s_stacks
 	t_list			*lst_b;
 	int				p1;
 	int				p2;
-	int				r_cnt;
+	int				ra_cnt;
+	int				rb_cnt;
 	int				p_cnt;
+	int				isprint;
 }					t_stacks;
 
 size_t				ft_strlen(char *str);
@@ -78,7 +80,7 @@ void				ft_move(t_list *lst, int dir);
 void				ft_push(t_list *lst1, t_list *lst2);
 
 void				get_pivot_from_lst(t_stacks *stack, t_list *lst, int size);
-int					is_sorted(t_list *lst);
+int					is_sorted(t_list *lst, int size, int dir);
 
 void				a_to_b(t_stacks *stack, int size);
 void				b_to_a(t_stacks *stack, int size);
@@ -95,4 +97,6 @@ void				sort_b_notthree(t_stacks *stack, t_node *a, t_node *b,
 
 void				ft_printlst_front(t_list *lst);
 void				ft_printlst_two(t_list *lst1, t_list *lst2);
+
+void				ft_a_to_b(t_stacks *stack, int size);
 #endif

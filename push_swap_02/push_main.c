@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 16:03:12 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/03 19:57:07 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/03 23:42:38 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,15 @@ int main(int argc, char* argv[])
 	if (argc <= 1)
 		ft_putstr(NOTENOUGHARG);	
 	for(int i = 1; i < argc; i++){
-		tmp = ft_nodenew(ft_atoi(argv[i]));
+		tmp = ft_nodenew(atoi(argv[i]));
 		ft_lstadd_front(lst_a, tmp);
 	}
 	stack = ft_stacknew(lst_a, lst_b);
-	//printf("Start : \n");
-	//ft_printlst_two(stack->lst_a, stack->lst_b);
+	//printf("Start : \n"); ft_printlst_two(stack->lst_a, stack->lst_b);
 
 	a_to_b(stack, argc - 1);
 
-	//printf("\nEnd : \n");
-	//ft_printlst_two(stack->lst_a, stack->lst_b);
+	//printf("\nEnd : \n"); ft_printlst_two(stack->lst_a, stack->lst_b);
 
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 17:16:44 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/03 17:27:10 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/03 20:45:12 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ void	ft_num_swap(t_node *n1, t_node *n2)
 
 void	ft_stackcnt_init(t_stacks *stack)
 {
-	stack->r_cnt = 0;
+	stack->ra_cnt = 0;
+	stack->rb_cnt = 0;
 	stack->p_cnt = 0;
+	stack->isprint = 0;
 }
 
 void	ft_lstdelone(t_node *node)

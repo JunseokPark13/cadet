@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 16:59:26 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/03 20:09:05 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/03 23:40:02 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,12 @@ void			get_pivot_from_lst(t_stacks *stack, t_list *lst, int size)
 		head = head->next;
 	}
 	ft_quick_sort(ary, 0, size - 1);
-	stack->p1 = ary[size /2];
+	stack->p1 = ary[size / 3];
+	stack->p2 = ary[(size / 3) * 2];
 	ft_stackcnt_init(stack);
 }
 
-int				is_sorted(t_list *lst)
+int				is_sorted(t_list *lst, int size, int dir)
 {
 	t_node	*head;
 	int		k;
@@ -82,12 +83,18 @@ int				is_sorted(t_list *lst)
 	k = 0;
 	while (1)
 	{
-		if (k > 0 && head->next == lst->head)
+		if ((k > 0 && head->next == lst->head) || k == size)
 			return (1);
 		else
 		{
-			if (head->num > head->next->num)
-				return (0);
+			if (dir)
+			{
+				if (head->num > head->next->num)
+					return (0);
+			}
+			else
+				if (head->num < head->next->num)
+					return (0);
 		}
 		k++;
 		head = head->next;
