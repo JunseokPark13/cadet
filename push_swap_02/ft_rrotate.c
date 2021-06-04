@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 19:17:45 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/03 21:36:19 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/04 21:10:56 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,5 @@ void	ft_rrr(t_stacks *stack)
 	ft_rra(stack);
 	ft_rrb(stack);
 	write(1, "rrr\n", 4);
+	stack->isprint = 0;
 }

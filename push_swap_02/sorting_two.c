@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 17:21:43 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/03 19:07:16 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/04 20:59:10 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,23 @@ void		sort_two(t_stacks *stack, t_list *lst, int st)
 		ft_sa(stack);
 	else if (!st && first->num < second->num)
 		ft_sb(stack);
+}
+
+int			lstnum_check(t_list *lst, t_node *head, int piv)
+{
+	int		k;
+
+	k = 0;
+	while (1)
+	{
+		if (k > 0 && head == lst->head)
+			return (1);
+		else
+		{
+			if (head->num >= piv)
+				return (0);
+		}
+		head = head->next;
+		k++;
+	}
 }

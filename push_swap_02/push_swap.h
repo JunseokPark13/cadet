@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 16:03:21 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/03 23:40:47 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/04 20:54:01 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,19 @@ void				ft_rrr(t_stacks *stack);
 void				ft_move(t_list *lst, int dir);
 void				ft_push(t_list *lst1, t_list *lst2);
 
-void				get_pivot_from_lst(t_stacks *stack, t_list *lst, int size);
+void				get_pivot(t_stacks *stack, t_list *lst, int size,
+		int cs);
 int					is_sorted(t_list *lst, int size, int dir);
 
 void				a_to_b(t_stacks *stack, int size);
 void				b_to_a(t_stacks *stack, int size);
+void				a_to_b_five(t_stacks *stack, int size);
+void				b_to_a_five(t_stacks *stack, int size);
+
+void				ft_optimize(t_stacks *stack, int size, int st);
 
 int					cmp_three(int a, int b, int c);
+int					lstnum_check(t_list *lst, t_node *head, int piv);
 void				sort_two(t_stacks *stack, t_list *lst, int st);
 void				sort_three(t_stacks *stack, t_list *lst, int st);
 
@@ -94,9 +100,9 @@ void				sort_a_notthree(t_stacks *stack, t_node *a, t_node *b,
 void				sort_b_notthree(t_stacks *stack, t_node *a, t_node *b,
 		t_node *c);
 
+void				ft_optimize(t_stacks *stack, int size, int st);
 
 void				ft_printlst_front(t_list *lst);
 void				ft_printlst_two(t_list *lst1, t_list *lst2);
-
-void				ft_a_to_b(t_stacks *stack, int size);
+void				tester(t_stacks *stack, char *str);
 #endif

@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 19:15:09 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/03 23:09:04 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/04 21:03:24 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_ra(t_stacks *stack)
 {
 	t_node	*head;
-
+	
 	stack->ra_cnt += 1;
 	if (!stack->lst_a->cnt || stack->lst_a->cnt == 1)
 		return ;
@@ -46,4 +46,5 @@ void	ft_rr(t_stacks *stack)
 	ft_ra(stack);
 	ft_rb(stack);
 	write(1, "rr\n", 3);
+	stack->isprint = 0;
 }

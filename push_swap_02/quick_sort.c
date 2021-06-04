@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 16:59:26 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/03 23:40:02 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/04 20:02:20 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void		ft_quick_sort(int *ary, int left, int right)
 	}
 }
 
-void			get_pivot_from_lst(t_stacks *stack, t_list *lst, int size)
+void			get_pivot(t_stacks *stack, t_list *lst, int size, int cs)
 {
 	t_node	*head;
 	int		ary[size];
@@ -69,8 +69,13 @@ void			get_pivot_from_lst(t_stacks *stack, t_list *lst, int size)
 		head = head->next;
 	}
 	ft_quick_sort(ary, 0, size - 1);
-	stack->p1 = ary[size / 3];
-	stack->p2 = ary[(size / 3) * 2];
+	if (cs == 2)
+	{
+		stack->p1 = ary[size / 3];
+		stack->p2 = ary[(size / 3) * 2];
+	}
+	else if (cs == 1)
+		stack->p1 = ary[size / 2];
 	ft_stackcnt_init(stack);
 }
 

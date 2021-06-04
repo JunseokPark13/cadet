@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 16:03:12 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/03 23:42:38 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/04 22:48:37 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,22 @@ int main(int argc, char* argv[])
 		ft_lstadd_front(lst_a, tmp);
 	}
 	stack = ft_stacknew(lst_a, lst_b);
-	//printf("Start : \n"); ft_printlst_two(stack->lst_a, stack->lst_b);
 
-	a_to_b(stack, argc - 1);
+	// printf("Start : \n"); ft_printlst_two(stack->lst_a, stack->lst_b);
+/*
+	char k[4];
+	while (1)
+	{
+		scanf("%s", k);
+		tester(stack, k);
+	}
+*/
+	if (argc - 1 == 5)
+		a_to_b_five(stack, argc - 1);
+	else
+		a_to_b(stack, argc - 1);
 
-	//printf("\nEnd : \n"); ft_printlst_two(stack->lst_a, stack->lst_b);
+	// printf("\nEnd : \n"); ft_printlst_two(stack->lst_a, stack->lst_b);
 
 	return (0);
 }
