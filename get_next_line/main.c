@@ -21,6 +21,8 @@ int main(void)
 	do {
 		status = get_next_line(op, &str);
 		printf("%d : %s\n", status, str);
+		free(str);
 	} while(status > 0);
+	system("leaks test");
 	
 }
