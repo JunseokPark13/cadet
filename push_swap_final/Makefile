@@ -6,7 +6,7 @@
 #    By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/17 11:27:55 by jupark            #+#    #+#              #
-#    Updated: 2021/06/08 15:57:29 by jupark           ###   ########.fr        #
+#    Updated: 2021/06/15 17:53:57 by jupark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ SRCS_P = srcs_pushswap/push_main.c \
 	   srcs_pushswap/ft_split.c \
 	   srcs_pushswap/ft_strchr.c \
 	   srcs_pushswap/parse_input.c \
-	   srcs_pushswap/parse_util.c
+	   srcs_pushswap/parse_util.c \
+	   srcs_pushswap/temp_print.c
 
 SRCS_C = srcs_checker/checker_main.c \
 		 srcs_checker/check_command.c \

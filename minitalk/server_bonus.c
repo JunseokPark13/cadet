@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/13 16:07:03 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/15 15:30:20 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/15 14:25:40 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include "server_bonus.h"
 
-static void		handler(int signo)
+static void		handler(int signo, siginfo_t *sig, void *context)
 {
 	static int data;
 	static int bit;
 
+	(void)context;
+	if (!sig->si_pid || kill(sig->si_pid, signo))
+		return ;
 	if (signo == SIGUSR1)
 		data |= (1 << bit);
 	if (++bit == 8)
@@ -39,9 +42,16 @@ void			print_pid(void)
 
 int				main(void)
 {
+	struct sigaction	sigact;
+
 	print_pid();
-	signal(SIGUSR1, handler);
-	signal(SIGUSR2, handler);
+	sigact.sa_flags = SA_SIGINFO;
+	sigact.sa_sigaction = &handler;
+	if (sigaction(SIGUSR1, &sigact, NULL) || sigaction(SIGUSR2, &sigact, NULL))
+	{
+		ft_putstr("sigaction error\n");
+		return (1);
+	}
 	while (1)
 		pause();
 }

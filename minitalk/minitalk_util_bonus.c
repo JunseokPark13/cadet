@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk_util.c                                    :+:      :+:    :+:   */
+/*   minitalk_util_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 23:50:23 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/15 14:14:56 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/15 15:44:52 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
-#include "client.h"
+#include "server_bonus.h"
+#include "client_bonus.h"
 
 void		ft_putnbr(int num)
 {

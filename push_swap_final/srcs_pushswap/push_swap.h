@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 16:03:21 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/08 16:49:37 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/15 17:54:39 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,6 @@ void				sort_b_notthree(t_stacks *stack, int a, int b, int c);
 
 void				do_command(t_stacks *stack, char *cmd);
 void				check_issorted(t_stacks *stack);
+
+void				ft_printlst_two(t_list *lst1, t_list *lst2);
 #endif

@@ -6,7 +6,7 @@
 /*   By: jupark <jupark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 16:03:12 by jupark            #+#    #+#             */
-/*   Updated: 2021/06/08 16:20:48 by jupark           ###   ########.fr       */
+/*   Updated: 2021/06/15 17:56:00 by jupark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void			push_swap(int *ary, int len)
 	t_stacks *stack;
 
 	stack = create_stacks(ary, len);
+	ft_printlst_two(stack->lst_a, stack->lst_b);
 	if (!is_sorted(stack->lst_a, len, 1))
 	{
 		if (len == 5)
@@ -24,6 +25,7 @@ static void			push_swap(int *ary, int len)
 		else
 			a_to_b(stack, len);
 	}
+	ft_printlst_two(stack->lst_a, stack->lst_b);
 	ft_stacksclear(stack);
 }
 
